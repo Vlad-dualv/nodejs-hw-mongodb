@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import { getEnvVar } from './utils/getEnvVar.js';
 import contactsRouter from './routers/contacts.js';
-import { ctrlWrapper } from './utils/ctrlWrapper.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
 export const setupServer = () => {
@@ -31,7 +31,7 @@ export const setupServer = () => {
 
   app.use('*', notFoundHandler);
 
-  app.use(ctrlWrapper);
+  app.use(errorHandler);
 
   const PORT = Number(getEnvVar('PORT')) || 3000;
 
