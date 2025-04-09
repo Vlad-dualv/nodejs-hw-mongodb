@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { typeList } from '../constants/contacts.js';
 
 export const createContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).required().messages({
@@ -19,14 +20,16 @@ export const createContactSchema = Joi.object({
     'string.max': 'Email should have at most {#limit} characters',
     'any.required': 'Email is required',
   }),
-  isFavourite: Joi.boolean(),
-  contactType: Joi.string().valid('personal', 'home', 'work').required(),
+  isFavorite: Joi.boolean(),
+  contactType: Joi.string()
+    .valid(...typeList)
+    .required(),
 });
 
 export const updateContactSchema = Joi.object({
   name: Joi.string().min(3).max(20),
   phoneNumber: Joi.string().min(11).max(20),
   email: Joi.string().email().min(3).max(20),
-  isFavourite: Joi.boolean(),
-  contactType: Joi.string().valid('personal', 'home', 'work'),
+  isFavorite: Joi.boolean(),
+  contactType: Joi.string().valid(...typeList),
 });
