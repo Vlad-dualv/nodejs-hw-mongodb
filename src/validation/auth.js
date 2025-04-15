@@ -20,3 +20,14 @@ export const registerUserSchema = Joi.object({
     'any.required': 'Password is required',
   }),
 });
+
+export const loginUserSchema = Joi.object({
+  email: Joi.string().email().required().messages({
+    'any.required': 'Email is required',
+    'string.base': 'Email should be a string',
+  }),
+  password: Joi.string().required().messages({
+    'any.required': 'Password is required',
+    'string.base': 'Password should be a string',
+  }),
+});
