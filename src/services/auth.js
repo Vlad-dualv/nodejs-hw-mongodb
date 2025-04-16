@@ -33,7 +33,7 @@ export const loginUser = async (payload) => {
     accessToken,
     refreshToken,
     accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
-    refreshTokenValidUntil: new Date(Date.now() + ONE_DAY),
+    refreshTokenValidUntil: new Date(Date.now() + ONE_DAY * 30),
   });
 };
 
