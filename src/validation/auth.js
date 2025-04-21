@@ -31,3 +31,21 @@ export const loginUserSchema = Joi.object({
     'string.base': 'Password should be a string',
   }),
 });
+
+export const requestResetEmailSchema = Joi.object({
+  email: Joi.string().email().required().messages({
+    'any.required': 'Email is required',
+    'string.base': 'Email should be a string',
+  }),
+});
+
+export const resetPasswordSchema = Joi.object({
+  password: Joi.string().required().messages({
+    'any.required': 'Password is required',
+    'string.base': 'Password should be a string',
+  }),
+  token: Joi.string().required().messages({
+    'any.required': 'Token is required',
+    'string.base': 'Token should be a string',
+  }),
+});
