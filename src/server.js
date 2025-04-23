@@ -7,6 +7,7 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import router from './routers/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 export const setupServer = () => {
   const app = express();
@@ -34,6 +35,8 @@ export const setupServer = () => {
   app.use('*', notFoundHandler);
 
   app.use(errorHandler);
+
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   const PORT = Number(getEnvVar('PORT')) || 3000;
 
