@@ -49,3 +49,10 @@ export const resetPasswordSchema = Joi.object({
     'string.base': 'Token should be a string',
   }),
 });
+
+export const loginWithGoogleOAuthSchema = Joi.object({
+  code: Joi.string().required().messages({
+    'any.required': 'Code is required',
+    'string.base': 'Code should be a string',
+  }),
+});
