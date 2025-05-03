@@ -11,10 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
-    },
-    {
-      "url": "https://example.com/api/v1"
+      "url": "https://nodejs-hw7-swagger-tgz5.onrender.com"
     }
   ],
   "tags": [
@@ -332,8 +329,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       },
@@ -476,6 +482,9 @@
           "204": {
             "description": "Delete contact by id"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
@@ -565,6 +574,9 @@
           "400": {
             "$ref": "#/components/responses/400"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "500": {
             "$ref": "#/components/responses/500"
           }
@@ -641,7 +653,7 @@
                           "example": "FoiNxa5knPpk5Ty3ngt6h46F6M146P3EiS0eszFt"
                         }
                       },
-                      "$ref": "#/components/schemas/login"
+                      "$ref": "#/components/schemas/auth"
                     }
                   }
                 }
@@ -816,7 +828,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/request"
+                      "$ref": "#/components/schemas/auth"
                     }
                   }
                 }
@@ -893,7 +905,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/reset"
+                      "$ref": "#/components/schemas/auth"
                     }
                   }
                 }
@@ -924,7 +936,6 @@
           "_id",
           "name",
           "userId",
-          "email",
           "phoneNumber",
           "contactType"
         ],
@@ -999,33 +1010,6 @@
             "example": "66aafbef2e949884e942be16"
           }
         }
-      },
-      "login": {
-        "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
-        "properties": {
-          "accessToken": {
-            "description": "Access token",
-            "type": "string",
-            "example": "FoiNxa5knPpk5Ty3ngt6h46F6M146P3EiS0eszFt"
-          }
-        }
-      },
-      "request": {
-        "type": "object",
-        "required": [
-          "email"
-        ]
-      },
-      "reset": {
-        "type": "object",
-        "required": [
-          "token",
-          "password"
-        ]
       }
     },
     "responses": {
@@ -1132,6 +1116,43 @@
                     "message": {
                       "type": "string",
                       "example": "Contact or user not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "Conflict",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 409
+                },
+                "message": {
+                  "type": "string",
+                  "example": "ConflictError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User already registered"
                     }
                   }
                 }

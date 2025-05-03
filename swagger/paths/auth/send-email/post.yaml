@@ -37,7 +37,7 @@ responses:
               example: Reset password email was successfully sent!
             data:
               type: object
-              $ref: '../../../components/schemas/request.yaml'
+              $ref: '../../../components/schemas/auth.yaml'
   '500':
     $ref: '../../../components/responses/500.yaml'
   '400':

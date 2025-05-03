@@ -3,7 +3,6 @@ required:
   - _id
   - name
   - userId
-  - email
   - phoneNumber
   - contactType
 properties:
