@@ -12,7 +12,7 @@ properties:
     description: 'User email'
     type: string
     example: 'example@gmail.com'
-  _id:
-    description: 'User id'
+  password:
+    description: 'User password'
     type: string
     example: '66aafbef2e949884e942be16'
