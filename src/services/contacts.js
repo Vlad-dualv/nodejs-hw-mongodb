@@ -58,14 +58,6 @@ export const createContact = async (payload) => {
   return contact;
 };
 
-export const deleteContact = async (contactId, userId) => {
-  const contact = await ContactsCollection.findOneAndDelete({
-    _id: contactId,
-    userId,
-  });
-  return contact;
-};
-
 export const updateContact = async (
   contactId,
   userId,
@@ -87,4 +79,12 @@ export const updateContact = async (
     contact: rawResult.value,
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
+};
+
+export const deleteContact = async (contactId, userId) => {
+  const contact = await ContactsCollection.findOneAndDelete({
+    _id: contactId,
+    userId,
+  });
+  return contact;
 };

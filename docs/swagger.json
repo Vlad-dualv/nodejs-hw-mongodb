@@ -81,6 +81,11 @@
             "name": "type",
             "schema": {
               "type": "string",
+              "enum": [
+                "work",
+                "home",
+                "personal"
+              ],
               "example": "home"
             }
           },
@@ -89,6 +94,10 @@
             "name": "isFavorite",
             "schema": {
               "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
               "example": true
             }
           }
@@ -564,7 +573,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/auth"
+                      "$ref": "#/components/schemas/user"
                     }
                   }
                 }
@@ -653,7 +662,7 @@
                           "example": "FoiNxa5knPpk5Ty3ngt6h46F6M146P3EiS0eszFt"
                         }
                       },
-                      "$ref": "#/components/schemas/auth"
+                      "$ref": "#/components/schemas/user"
                     }
                   }
                 }
@@ -828,7 +837,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/auth"
+                      "$ref": "#/components/schemas/user"
                     }
                   }
                 }
@@ -905,7 +914,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/auth"
+                      "$ref": "#/components/schemas/user"
                     }
                   }
                 }
@@ -986,7 +995,7 @@
           }
         }
       },
-      "auth": {
+      "user": {
         "type": "object",
         "required": [
           "name",
@@ -1006,6 +1015,11 @@
           },
           "password": {
             "description": "User password",
+            "type": "string",
+            "example": "66aafbef2e949884e942be16"
+          },
+          "_id": {
+            "description": "User id",
             "type": "string",
             "example": "66aafbef2e949884e942be16"
           }
@@ -1041,7 +1055,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Request body could not be read properly."
+                      "example": "Invalid or missing contact ID or malformed request data. Please check your input and try again."
                     }
                   }
                 }

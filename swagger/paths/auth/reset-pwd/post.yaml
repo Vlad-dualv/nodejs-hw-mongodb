@@ -42,7 +42,7 @@ responses:
               example: Password was successfully reset!
             data:
               type: object
-              $ref: '../../../components/schemas/auth.yaml'
+              $ref: '../../../components/schemas/user.yaml'
   '500':
     $ref: '../../../components/responses/500.yaml'
   '400':

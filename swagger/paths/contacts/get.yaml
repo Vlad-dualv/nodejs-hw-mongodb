@@ -32,11 +32,13 @@ parameters:
     name: type
     schema:
       type: string
+      enum: ['work', 'home', 'personal']
       example: home
   - in: query
     name: isFavorite
     schema:
       type: string
+      enum: ['true', 'false']
       example: true
 responses:
   '200':
