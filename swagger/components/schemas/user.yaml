@@ -3,6 +3,7 @@ required:
   - name
   - email
   - password
+  - _id
 properties:
   name:
     description: 'User name'
